@@ -35,7 +35,7 @@ int   NumerosPontosTuristicos2;
         scanf ("%d",&Populacao1);
 
         printf("Digite a Área em KM2 da Carta 1:");
-        scanf ("%s",&Area_KM21);
+        scanf ("%f",&Area_KM21);
 
         printf("Digite o PIB da carta 1:");
         scanf ("%f",&PIB1);
@@ -57,7 +57,7 @@ printf("Digite a População da carta 2:");
 scanf ("%d",&Populacao2);
 
 printf("Digite a Área em KM2 da Carta 2:");
-scanf ("%s",&Area_KM22);
+scanf ("%f",&Area_KM22);
 
 printf("Digite o PIB da carta 2:");
 scanf ("%f",&PIB2);
