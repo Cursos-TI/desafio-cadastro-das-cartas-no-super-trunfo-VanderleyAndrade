@@ -5,22 +5,37 @@ int main(){
 char  estado1[20];
 char  CodigoCarta1[20];
 char  NomeCidade1[20];
-int   Populacao1;
+unsigned long int   Populacao1;
 float Area_KM21;
 float PIB1;
 int   NumerosPontosTuristicos1;
 float DensidadePopulacional1;
-float PIBPerCapita1;
-     
+float PIBPerCapita1; 
+unsigned long int SomaSuperPoder1;
+float InvDensidadePopulacional1;
+
+
+
 char  estado2[20];
 char  CodigoCarta2[20];
 char  NomeCidade2[20];
-int   Populacao2;
+unsigned long int   Populacao2;
 float Area_KM22;
 float PIB2;
 int   NumerosPontosTuristicos2;
 float DensidadePopulacional2;
 float PIBPerCapita2;
+unsigned long int SomaSuperPoder2;
+float InvDensidadePopulacional2;
+
+// Variaveis resultado das comparações
+unsigned long int populacao;
+float area;
+float PIB;
+int PontosTuristicos;
+float DensidadePopulacional;
+float PibPerCapta;
+float Superpoder; 
 
 
 // Informações para cadastro da carta 1
@@ -71,39 +86,43 @@ scanf ("%d",&NumerosPontosTuristicos2);
 DensidadePopulacional1 =(float) Populacao1 / Area_KM21;
 DensidadePopulacional2 =(float) Populacao2 / Area_KM22;
 
-//Colocado *1000000000 para movimentar a virgula no resultado
+InvDensidadePopulacional1 = 1 / DensidadePopulacional1;
+InvDensidadePopulacional2 = 1 / DensidadePopulacional2;
+printf ("Inverso da densidade Populacional 1 é : %f \n",InvDensidadePopulacional1);
+printf ("Inverso da densidade Populacional 2 é : %f \n",InvDensidadePopulacional2);
+
+
 PIBPerCapita1 = (float) (PIB1 / Populacao1) *1000000000;
 PIBPerCapita2 = (float) (PIB2 / Populacao2) *1000000000;
 
 
+//Soma Super Poder 
 
-// Exibe  o resultado da carta 1
-printf("Carta 1:\n");
-printf("Estado: %s\n",estado1);
-printf("Código: %s\n",CodigoCarta1);
-printf("Nome da Cidade: %s\n",NomeCidade1);
-printf("População: %d\n",Populacao1);
-printf("Área: %.2f km²\n",Area_KM21);
-printf("PIB: %.2f bilhões\n",PIB1);
-printf("Numero de Pontos Turisticos: %d\n",NumerosPontosTuristicos1);
-printf("Densidade Populacional: %.2f hab/km²\n",DensidadePopulacional1);
-printf("PIB per Capita: %f reais\n",PIBPerCapita1);
+ SomaSuperPoder1 = (unsigned long int)(Populacao1 + Area_KM21 + PIB1 + NumerosPontosTuristicos1 + PIBPerCapita1  + InvDensidadePopulacional1);
+ SomaSuperPoder2 = (unsigned long int) (Populacao2 + Area_KM22 + PIB2 + NumerosPontosTuristicos2 + PIBPerCapita2  + InvDensidadePopulacional2); 
 
 
+// Comparação das Cartas
 
-// Exibe  o resultado da carta 2
-printf("Carta 2:\n");
-printf("Estado: %s\n",estado2);
-printf("Código: %s\n",CodigoCarta2);
-printf("Nome da Cidade: %s\n",NomeCidade2);
-printf("População: %d\n",Populacao2);
-printf("Área: %.2f km²\n",Area_KM22);
-printf("PIB: %.2f bilhões\n",PIB2);
-printf("Numero de Pontos Turisticos: %d\n",NumerosPontosTuristicos2);
-printf("Densidade Populacional: %.2f hab/km²\n",DensidadePopulacional2);
-printf("PIB per Capita: %f reais\n",PIBPerCapita2);
+populacao = Populacao1 > Populacao2;
+area = Area_KM21 > Area_KM22;
+PIB = PIB1 > PIB2;
+PontosTuristicos = NumerosPontosTuristicos1 > NumerosPontosTuristicos2;
+DensidadePopulacional = DensidadePopulacional1 < DensidadePopulacional2;
+PibPerCapta = PIBPerCapita1 > PIBPerCapita2;
+Superpoder = SomaSuperPoder1 > SomaSuperPoder2;
+
+ 
+printf("População Venceu:%.2u\n",populacao);
+printf("Área Venceu : %.2f\n",area);
+printf("PIB venceu: %.2f\n",PIB);
+printf("Pontos Turisticos Venceu: %.2d\n",PontosTuristicos);
+printf("Densidade Populacional venceu: %.2f\n",DensidadePopulacional);
+printf("PIB per Capita venceu: %.2f \n",PibPerCapta);
+printf("Super Poder Venceu: %.2f \n",Superpoder);
+
 
 return 0;
 
-
 }
+
