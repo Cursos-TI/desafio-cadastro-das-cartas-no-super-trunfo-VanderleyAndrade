@@ -2,10 +2,10 @@
 int main(){
 
  // Declaração das variaveis
-char  estado1[20];
+char estado1[20];
 char  CodigoCarta1[20];
 char  NomeCidade1[20];
-unsigned long int   Populacao1;
+int   Populacao1;
 float Area_KM21;
 float PIB1;
 int   NumerosPontosTuristicos1;
@@ -19,7 +19,7 @@ float InvDensidadePopulacional1;
 char  estado2[20];
 char  CodigoCarta2[20];
 char  NomeCidade2[20];
-unsigned long int   Populacao2;
+int   Populacao2;
 float Area_KM22;
 float PIB2;
 int   NumerosPontosTuristicos2;
@@ -83,13 +83,28 @@ scanf ("%f",&PIB2);
 printf("Digite o numero de pontos turísticos da carta 2:");
 scanf ("%d",&NumerosPontosTuristicos2);
 
+// Comparação das Cartas para descobrir a vencedora
+
+printf("Comparação das Cartas (Atributo População) \n");
+
+if (Populacao1 > Populacao2){
+        printf(" Carta 1- %s(%s): %d\n",NomeCidade1,estado1,Populacao1);
+        printf(" Carta 2- %s(%s): %d\n",NomeCidade2,estado2,Populacao2);
+        printf(" Resultado : Carta 1 (%s) Venceu!" ,NomeCidade1);
+   
+}else{
+        printf(" Carta 1- %s(%s): %d\n",NomeCidade1,estado1,Populacao1);
+        printf(" Carta 2- %s(%s): %d\n",NomeCidade2,estado2,Populacao2);
+        printf(" Resultado : Carta 2 (%s) Venceu!" ,NomeCidade2);
+}       
+
+
+
 DensidadePopulacional1 =(float) Populacao1 / Area_KM21;
 DensidadePopulacional2 =(float) Populacao2 / Area_KM22;
 
 InvDensidadePopulacional1 = 1 / DensidadePopulacional1;
 InvDensidadePopulacional2 = 1 / DensidadePopulacional2;
-printf ("Inverso da densidade Populacional 1 é : %f \n",InvDensidadePopulacional1);
-printf ("Inverso da densidade Populacional 2 é : %f \n",InvDensidadePopulacional2);
 
 
 PIBPerCapita1 = (float) (PIB1 / Populacao1) *1000000000;
@@ -102,24 +117,7 @@ PIBPerCapita2 = (float) (PIB2 / Populacao2) *1000000000;
  SomaSuperPoder2 = (unsigned long int) (Populacao2 + Area_KM22 + PIB2 + NumerosPontosTuristicos2 + PIBPerCapita2  + InvDensidadePopulacional2); 
 
 
-// Comparação das Cartas
 
-populacao = Populacao1 > Populacao2;
-area = Area_KM21 > Area_KM22;
-PIB = PIB1 > PIB2;
-PontosTuristicos = NumerosPontosTuristicos1 > NumerosPontosTuristicos2;
-DensidadePopulacional = DensidadePopulacional1 < DensidadePopulacional2;
-PibPerCapta = PIBPerCapita1 > PIBPerCapita2;
-Superpoder = SomaSuperPoder1 > SomaSuperPoder2;
-
- 
-printf("População Venceu:%.2u\n",populacao);
-printf("Área Venceu : %.2f\n",area);
-printf("PIB venceu: %.2f\n",PIB);
-printf("Pontos Turisticos Venceu: %.2d\n",PontosTuristicos);
-printf("Densidade Populacional venceu: %.2f\n",DensidadePopulacional);
-printf("PIB per Capita venceu: %.2f \n",PibPerCapta);
-printf("Super Poder Venceu: %.2f \n",Superpoder);
 
 
 return 0;
